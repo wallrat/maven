@@ -26,7 +26,6 @@ import org.apache.maven.execution.MavenSession;
 import org.apache.maven.execution.scope.internal.MojoExecutionScopeModule;
 import org.apache.maven.model.Plugin;
 import org.apache.maven.plugin.ContextEnabled;
-import org.apache.maven.plugin.DebugConfigurationListener;
 import org.apache.maven.plugin.ExtensionRealmCache;
 import org.apache.maven.plugin.InvalidPluginDescriptorException;
 import org.apache.maven.plugin.MavenPluginManager;
@@ -63,7 +62,6 @@ import org.codehaus.plexus.classworlds.realm.ClassRealm;
 import org.codehaus.plexus.component.composition.CycleDetectedInComponentGraphException;
 import org.codehaus.plexus.component.configurator.ComponentConfigurationException;
 import org.codehaus.plexus.component.configurator.ComponentConfigurator;
-import org.codehaus.plexus.component.configurator.ConfigurationListener;
 import org.codehaus.plexus.component.configurator.expression.ExpressionEvaluationException;
 import org.codehaus.plexus.component.configurator.expression.ExpressionEvaluator;
 import org.codehaus.plexus.component.repository.ComponentDescriptor;
@@ -618,10 +616,8 @@ public class DefaultMavenPluginManager
             // so that this method could entirely be handled by a plexus lookup?
             configurator = container.lookup( ComponentConfigurator.class, configuratorId );
 
-            ConfigurationListener listener = new DebugConfigurationListener( logger );
-
             ValidatingConfigurationListener validator =
-                new ValidatingConfigurationListener( mojo, mojoDescriptor, listener );
+                new ValidatingConfigurationListener( mojo, mojoDescriptor, logger );
 
             logger.debug(
                 "Configuring mojo '" + mojoDescriptor.getId() + "' with " + configuratorId + " configurator -->" );
