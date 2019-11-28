@@ -36,7 +36,7 @@ import org.junit.jupiter.api.Test;
 import org.xml.sax.SAXException;
 import org.xml.sax.ext.LexicalHandler;
 
-public class ConsumerPomXMLFilterTest extends AbstractXMLFilterTests
+class ConsumerPomXMLFilterTest extends AbstractXMLFilterTests
 {
     @Override
     protected String omitXmlDeclaration()
