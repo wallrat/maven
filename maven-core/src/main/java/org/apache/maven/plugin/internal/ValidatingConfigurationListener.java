@@ -20,7 +20,6 @@ package org.apache.maven.plugin.internal;
  */
 
 import java.lang.reflect.Array;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -30,7 +29,8 @@ import org.apache.maven.plugin.descriptor.MojoDescriptor;
 import org.apache.maven.plugin.descriptor.Parameter;
 import org.apache.maven.shared.utils.logging.MessageUtils;
 import org.codehaus.plexus.component.configurator.ConfigurationListener;
-import org.codehaus.plexus.logging.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * A configuration listener to help validate the plugin configuration. For instance, check for required but missing
@@ -46,15 +46,14 @@ class ValidatingConfigurationListener
 
     private final MojoDescriptor mojoDescriptor;
 
-    private final Logger logger;
+    private final Logger logger = LoggerFactory.getLogger( ValidatingConfigurationListener.class );
 
     private final Map<String, Parameter> missingParameters;
 
-    ValidatingConfigurationListener( Object mojo, MojoDescriptor mojoDescriptor, Logger logger )
+    ValidatingConfigurationListener( Object mojo, MojoDescriptor mojoDescriptor )
     {
         this.mojo = mojo;
         this.mojoDescriptor = mojoDescriptor;
-        this.logger = logger;
         this.missingParameters = new HashMap<>();
 
         if ( mojoDescriptor.getParameters() != null )

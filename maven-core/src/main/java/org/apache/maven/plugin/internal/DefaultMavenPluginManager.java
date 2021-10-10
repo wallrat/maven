@@ -616,8 +616,7 @@ public class DefaultMavenPluginManager
             // so that this method could entirely be handled by a plexus lookup?
             configurator = container.lookup( ComponentConfigurator.class, configuratorId );
 
-            ValidatingConfigurationListener validator =
-                new ValidatingConfigurationListener( mojo, mojoDescriptor, logger );
+            ValidatingConfigurationListener validator = new ValidatingConfigurationListener( mojo, mojoDescriptor );
 
             logger.debug(
                 "Configuring mojo '" + mojoDescriptor.getId() + "' with " + configuratorId + " configurator -->" );
