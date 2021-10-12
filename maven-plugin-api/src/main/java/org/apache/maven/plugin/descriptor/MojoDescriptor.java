@@ -19,7 +19,7 @@ package org.apache.maven.plugin.descriptor;
  * under the License.
  */
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -56,8 +56,6 @@ public class MojoDescriptor
     private static final String DEFAULT_LANGUAGE = "java";
 
     private List<Parameter> parameters;
-
-    private Map<String, Parameter> parameterMap;
 
     /** By default, the execution strategy is "once-per-session" */
     private String executionStrategy = SINGLE_PASS_EXEC_STRATEGY;
@@ -229,20 +227,18 @@ public class MojoDescriptor
     }
 
     /**
-     * @return the list parameters as a Map
+     * @return the list parameters as a Map that is built from {@link #parameters} list. Any change to this map is NOT
+     *         reflected on list and other way around!
      */
     public Map<String, Parameter> getParameterMap()
     {
-        if ( parameterMap == null )
-        {
-            parameterMap = new HashMap<>();
+        LinkedHashMap<String, Parameter> parameterMap = new LinkedHashMap<>();
 
-            if ( parameters != null )
+        if ( parameters != null )
+        {
+            for ( Parameter pd : parameters )
             {
-                for ( Parameter pd : parameters )
-                {
-                    parameterMap.put( pd.getName(), pd );
-                }
+                parameterMap.put( pd.getName(), pd );
             }
         }
 
