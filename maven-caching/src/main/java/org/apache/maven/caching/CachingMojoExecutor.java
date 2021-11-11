@@ -93,6 +93,7 @@ public class CachingMojoExecutor implements MojoExecutor
     private final MojoParametersListener mojoListener;
 
     @Inject
+    @SuppressWarnings( "checkstyle:parameternumber" )
     public CachingMojoExecutor(
             Logger logger, 
             BuildPluginManager pluginManager, 

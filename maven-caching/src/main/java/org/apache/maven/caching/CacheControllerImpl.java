@@ -126,6 +126,7 @@ public class CacheControllerImpl implements CacheController
     private volatile Scm scm;
 
     @Inject
+    @SuppressWarnings( "checkstyle:parameternumber" )
     public CacheControllerImpl(
             Logger logger, 
             MavenPluginManager mavenPluginManager, 

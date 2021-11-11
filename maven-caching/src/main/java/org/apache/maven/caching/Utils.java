@@ -27,6 +27,9 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+/**
+ * Utils.
+ */
 public class Utils
 {
 
@@ -71,6 +74,12 @@ public class Utils
         return first;
     }
 
+    /**
+     * Multi Map.
+     *
+     * @param <K>
+     * @param <V>
+     */
     public static class MultiMap<K, V> extends HashMap<K, Collection<V>>
     {
         public void add( K key, V value )
