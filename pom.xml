@@ -26,7 +26,7 @@ under the License.
     <groupId>org.apache.maven</groupId>
     <artifactId>maven-parent</artifactId>
     <version>34</version>
-    <relativePath />
+    <relativePath/>
   </parent>
 
   <artifactId>maven</artifactId>
@@ -60,7 +60,7 @@ under the License.
     <guavaVersion>30.1-jre</guavaVersion>
     <guavafailureaccessVersion>1.0.1</guavafailureaccessVersion>
     <sisuVersion>0.3.5</sisuVersion>
-    <wagonVersion>3.4.3</wagonVersion>
+    <wagonVersion>3.5.1</wagonVersion>
     <jsoupVersion>1.12.1</jsoupVersion>
     <securityDispatcherVersion>2.0</securityDispatcherVersion>
     <cipherVersion>2.0</cipherVersion>
